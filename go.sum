@@ -1,0 +1,10 @@
+github.com/goccy/go-json v0.7.10 h1:ulhbuNe1JqE68nMRXXTJRrUu0uhouf0VevLINxQq4Ec=
+github.com/goccy/go-json v0.7.10/go.mod h1:6MelG93GURQebXPDq3khkgXZkazVtN9CRI+MGFi0w8I=
+github.com/hetiansu5/urlquery v1.2.7 h1:jn0h+9pIRqUziSPnRdK/gJK8S5TCnk+HZZx5fRHf8K0=
+github.com/hetiansu5/urlquery v1.2.7/go.mod h1:wFpZdTHRdwt7mk0EM/DdZEWtEN4xf8HJoH/BLXm/PG0=
+github.com/m-murad/ordered-sync-map v0.0.0-20210824075014-dbe832a85004 h1:lTIcIKRQEr2XCQIPZL7OyYY9TGN0oTWJ0jwPcygZ5RM=
+github.com/m-murad/ordered-sync-map v0.0.0-20210824075014-dbe832a85004/go.mod h1:NzB23TXW83d3zF7ikxWAHaOSHO7JqKk33pAi7HmlUjs=
+github.com/phuslu/log v1.0.75 h1:2Qcqgwo1sOsvj7QIuclIS92hmWxIISI2+XskYM1Nw2A=
+github.com/phuslu/log v1.0.75/go.mod h1:kzJN3LRifrepxThMjufQwS7S35yFAB+jAV1qgA7eBW4=
+github.com/rs/xid v1.3.0 h1:6NjYksEUlhurdVehpc7S7dk6DAmcKv8V9gG0FsVN2U4=
+github.com/rs/xid v1.3.0/go.mod h1:trrq9SKmegXys3aeAKXMUTdJsYXVwGY3RLcfgqegfbg=

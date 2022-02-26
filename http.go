@@ -8,7 +8,7 @@ import (
 )
 
 // DefaultHostSprayingTransport returns a new http.Transport with similar default values to
-// http.DefaultTransport, but with idle connections and keepalives disabled.
+// http.DefaultTransport, but with idle connections and keep alive disabled.
 func DefaultHostSprayingTransport() *http.Transport {
 	transport := DefaultReusePooledTransport()
 	transport.DisableKeepAlives = true

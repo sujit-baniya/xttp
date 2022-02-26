@@ -47,7 +47,7 @@ func DefaultBackoff() func(min, max time.Duration, attemptNum int, resp *http.Re
 func LinearJitterBackoff() func(min, max time.Duration, attemptNum int, resp *http.Response) time.Duration {
 	// Seed a global random number generator and use it to generate random
 	// numbers for the backoff. Use a mutex for protecting the source
-	rand := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
+	rnd := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
 	randMutex := &sync.Mutex{}
 
 	return func(min, max time.Duration, attemptNum int, resp *http.Response) time.Duration {
@@ -65,7 +65,7 @@ func LinearJitterBackoff() func(min, max time.Duration, attemptNum int, resp *ht
 		// increment here. We first get a random percentage, then apply that to the
 		// difference between min and max, and add to min.
 		randMutex.Lock()
-		jitter := rand.Float64() * float64(max-min)
+		jitter := rnd.Float64() * float64(max-min)
 		randMutex.Unlock()
 
 		jitterMin := int64(jitter) + int64(min)
@@ -80,14 +80,14 @@ func LinearJitterBackoff() func(min, max time.Duration, attemptNum int, resp *ht
 func FullJitterBackoff() func(min, max time.Duration, attemptNum int, resp *http.Response) time.Duration {
 	// Seed a global random number generator and use it to generate random
 	// numbers for the backoff. Use a mutex for protecting the source
-	rand := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
+	rnd := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
 	randMutex := &sync.Mutex{}
 
 	return func(min, max time.Duration, attemptNum int, resp *http.Response) time.Duration {
 		duration := attemptNum * 1000000000 << 1
 
 		randMutex.Lock()
-		jitter := rand.Intn(duration-attemptNum) + int(min)
+		jitter := rnd.Intn(duration-attemptNum) + int(min)
 		randMutex.Unlock()
 
 		if jitter > int(max) {
@@ -108,7 +108,7 @@ func FullJitterBackoff() func(min, max time.Duration, attemptNum int, resp *http
 func ExponentialJitterBackoff() func(min, max time.Duration, attemptNum int, resp *http.Response) time.Duration {
 	// Seed a global random number generator and use it to generate random
 	// numbers for the backoff. Use a mutex for protecting the source
-	rand := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
+	rnd := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
 	randMutex := &sync.Mutex{}
 
 	return func(min, max time.Duration, attemptNum int, resp *http.Response) time.Duration {
@@ -116,7 +116,7 @@ func ExponentialJitterBackoff() func(min, max time.Duration, attemptNum int, res
 		mult := math.Pow(2, float64(attemptNum)) * minf
 
 		randMutex.Lock()
-		jitter := rand.Float64() * (mult - minf)
+		jitter := rnd.Float64() * (mult - minf)
 		randMutex.Unlock()
 
 		mult += jitter
